@@ -53,8 +53,8 @@ export default function LoginPage() {
             } else {
                 setError(data.error || 'خطأ في اسم المستخدم أو كلمة المرور');
             }
-        } catch (err) {
-            setError('حدث خطأ فني، يرجى المحاولة لاحقاً');
+        } catch (err: any) {
+            setError(err.message || 'حدث خطأ فني، يرجى المحاولة لاحقاً');
         } finally {
             setLoading(false);
         }
