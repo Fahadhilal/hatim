@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}
+
+model School {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  password    String
+  nominations Nomination[]
+}
+
+model Nomination {
+  id          Int      @id @default(autoincrement())
+  teacherName String
+  phone       String?
+  subject     String?
+  role        String?
+  status      Boolean  @default(false)
+  year        Int
+  schoolId    Int
+  createdAt   DateTime @default(now())
+  school      School   @relation(fields: [schoolId], references: [id])
+
+  @@unique([schoolId, teacherName, year])
+}

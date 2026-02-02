@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  --color-green-50: #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+  --color-green-950: #052e16;
+
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+  --color-red-950: #450a0a;
+
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+  --color-amber-950: #451a03;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+}
+
+:root {
+  --formal-blue: #1e40af;
+  --formal-blue-dark: #1e3a8a;
+  --formal-blue-light: #3b82f6;
+  --formal-slate: #475569;
+  --formal-amber: #f59e0b;
+  --formal-border: #e2e8f0;
+  --formal-bg: #f8fafc;
+}
+
+@layer base {
+  body {
+    background-color: var(--formal-bg);
+    color: #0f172a;
+    min-height: 100vh;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 700;
+    border-bottom: 2px solid #e2e8f0;
+    text-align: right;
+    padding: 1rem;
+  }
+
+  td {
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1rem;
+    text-align: right;
+  }
+}
+
+@layer components {
+
+  /* PDF & Formal Utils - Using HEX to avoid Tailwind 4 modern color crashes in html2canvas */
+  .pdf-bg-white {
+    background-color: #ffffff !important;
+  }
+
+  .pdf-border-black {
+    border-color: #000000 !important;
+  }
+
+  .pdf-border-slate {
+    border-color: #e2e8f0 !important;
+  }
+
+  .pdf-text-slate {
+    color: #64748b !important;
+  }
+
+  .pdf-bg-slate-light {
+    background-color: #f8fafc !important;
+  }
+
+  .formal-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .formal-input {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    color: #0f172a;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  .formal-input:focus {
+    border-color: var(--formal-blue);
+    box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.1);
+  }
+
+  .btn-formal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--formal-blue);
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-formal:hover {
+    background-color: var(--formal-blue-dark);
+  }
+
+  .btn-formal:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+  }
+
+  .btn-formal-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+    background-color: #ffffff;
+    color: var(--formal-blue);
+    border: 2px solid var(--formal-blue);
+    font-weight: 700;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-formal-outline:hover {
+    background-color: #eff6ff;
+  }
+
+  .btn-formal-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem;
+    background-color: #b91c1c;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 0.375rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-formal-danger:hover {
+    background-color: #991b1b;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    border-right: 4px solid var(--formal-blue);
+    padding-right: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
