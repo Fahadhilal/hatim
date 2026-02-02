@@ -51,7 +51,8 @@ export default function LoginPage() {
                 if (data.role === 'admin') router.push('/admin');
                 else router.push('/dashboard');
             } else {
-                setError(data.error || 'خطأ في اسم المستخدم أو كلمة المرور');
+                const errorMessage = data.details ? `${data.error}: ${data.details}` : data.error;
+                setError(errorMessage || 'خطأ في اسم المستخدم أو كلمة المرور');
             }
         } catch (err: any) {
             setError(err.message || 'حدث خطأ فني، يرجى المحاولة لاحقاً');
@@ -135,6 +136,11 @@ export default function LoginPage() {
                         {error && (
                             <div className="bg-red-50 border-r-4 border-red-700 text-red-800 px-4 py-3 text-sm font-bold">
                                 {error}
+                                {error.includes('النظام') && (
+                                    <div className="mt-1 text-xs font-normal opacity-80 dir-ltr text-left">
+                                        Details: {typeof error === 'string' && error.includes(':') ? error.split(':').slice(1).join(':') : 'Technical issue'}
+                                    </div>
+                                )}
                             </div>
                         )}
 
